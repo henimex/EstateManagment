@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Property } from 'src/app/models/property';
 import { HousingService } from 'src/app/services/housing.service';
 
 @Component({
@@ -7,11 +8,13 @@ import { HousingService } from 'src/app/services/housing.service';
   styleUrls: ['./property-list.component.css'],
 })
 export class PropertyListComponent implements OnInit {
-  properties: any;
+  properties: Property[];
 
   constructor(private housingService:HousingService) {}
   ngOnInit(): void {
-    this.getProperties();
+    //this.getProperties();
+    this.getPropertiesResponse();
+    this.getAllSingle();
   }
 
   getProperties(){
@@ -20,6 +23,23 @@ export class PropertyListComponent implements OnInit {
     },error => {
       console.log("Error Handling v1.1 : "+ error.message);
       console.log(error);
+    })
+  }
+
+  getPropertiesResponse(){
+    this.housingService.getAll().subscribe(response => {
+      this.properties = response.data
+    },error => {
+      console.log("Error Handling v1.1 : "+ error.message);
+      console.log(error);
+    })
+  }
+
+  getAllSingle(){
+    this.housingService.getAllSingle().subscribe(response => {
+      console.log('single')
+      console.log(response)
+      this.properties = response
     })
   }
 }

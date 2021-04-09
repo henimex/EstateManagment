@@ -40,5 +40,11 @@
     "Name": "Double Apartment",
     "Type": "Apartment",
     "Price": 23500
+  },
+  {
+    "Id": 8,
+    "Name": "Old English Castle",
+    "Type": "Castle",
+    "Price": 59100000
   }
 ]
