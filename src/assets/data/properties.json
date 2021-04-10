@@ -1,50 +1,73 @@
 [
   {
     "Id": 1,
+    "SellRent": 1,
     "Name": "Suit Room",
     "Type": "Hotel",
-    "Price": 12000
+    "Price": 12000,
+    "Image": "prop-1"
   },
   {
     "Id": 2,
+    "SellRent": 1,
     "Name": "Villa",
     "Type": "House",
-    "Price": 15000
+    "Price": 15000,
+    "Image": "prop-2"
   },
   {
     "Id": 3,
+    "SellRent": 1,
     "Name": "Single Apartment",
     "Type": "Apartment",
-    "Price": 25000
+    "Price": 25000,
+    "Image": "prop-3"
   },
   {
     "Id": 4,
+    "SellRent": 1,
     "Name": "Prefabric House",
     "Type": "House",
-    "Price": 1500
+    "Price": 1500,
+    "Image": "prop-4"
   },
   {
     "Id": 5,
+    "SellRent": 1,
     "Name": "Mobile House",
     "Type": "House",
-    "Price": 6950
+    "Price": 6950,
+    "Image": "prop-5"
   },
   {
     "Id": 6,
+    "SellRent": 2,
     "Name": "Dublex For Holiday",
     "Type": "House",
-    "Price": 14500
+    "Price": 14500,
+    "Image": "prop-6"
   },
   {
     "Id": 7,
+    "SellRent": 2,
     "Name": "Double Apartment",
     "Type": "Apartment",
-    "Price": 23500
+    "Price": 23500,
+    "Image": "prop-7"
   },
   {
     "Id": 8,
+    "SellRent": 2,
     "Name": "Old English Castle",
     "Type": "Castle",
+    "Price": 59100000,
+    "Image": "prop-8"
+  },
+  {
+    "Id": 9,
+    "SellRent": 2,
+    "Name": "Standart House",
+    "Type": "House",
     "Price": 59100000
   }
 ]

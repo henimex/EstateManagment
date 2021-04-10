@@ -3,8 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IProperty } from '../Abstracts/iproperty';
 import { map } from 'rxjs/operators';
-import { ListResponseModel } from '../models/responseModels/ListResponseModel';
 import { Property } from '../models/property';
+import { ListResponseModel } from '../models/responseModels/listResponseModel';
 
 @Injectable({
   providedIn: 'root',
@@ -17,9 +17,9 @@ export class HousingService {
     return this.http.get('assets/data/properties.json').pipe(
       map((response) => {
         const propertiesArray: Array<IProperty> = [];
-        for (const id in response) {
-          if (response.hasOwnProperty(id)) {
-            propertiesArray.push();
+        for (const i in response) {
+          if (response.hasOwnProperty(i)) {
+            //propertiesArray.push(response[i])
           }
         }
         return propertiesArray;
@@ -32,7 +32,10 @@ export class HousingService {
   }
 
   getAllSingle(): Observable<Property[]> {
-    console.log('')
     return this.http.get<Property[]>(this.apiUrl)
   }
+
+  // getAllSinglePiped(): Observable<Property[]> {
+  //   return this.http.get<Property[]>.pipe(filter(Property.SellRent===1))(this.apiUrl)
+  // }
 }
