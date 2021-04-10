@@ -1,3 +1,38 @@
-<p>property-add works!</p>
+<div class="card">
+  <div class="card-header">
+    <h3>Add New Property</h3> <i>(Template Driven Froms Method)</i>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #Form="ngForm" autocomplete="off" >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" #name="ngModel" ngModel name="Name" required minlength="5" autofocus>
+        <span *ngIf="!name.valid && name.touched" class="error-block">
+          <span *ngIf="name.errors.required">Reqired Area</span>
+          <span *ngIf="name.errors.minlength">At Least 5 Characters</span>
+          <!-- <i>controls.Name.errors.minlength.actualLength</i> -->
+        </span>
+      </div>
 
-<button class="btn btn-warning" (click)="onBack()">Back</button>
+      <div class="form-group">
+        <label for="sellRent">For Sale or Rent <small>(1-Buy 2-Rent)</small></label>
+        <input type="text" class="form-control" ngModel name="SellRent" required>
+      </div>
+
+      <div class="form-group">
+        <label for="type">Building Type</label>
+        <input type="text" class="form-control" ngModel name="Type" required>
+      </div>
+
+      <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" ngModel name="Price" required>
+      </div>
+      <br>
+      <div class="form-group col-12">
+        <button [disabled]="!name.valid" type="submit" class="btn btn-warning me-md-2">Save</button>
+        <button type="reset" class="btn btn-danger">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
