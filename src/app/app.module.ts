@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +14,8 @@ import { PropertyDetailComponent } from './Components/property/property-detail/p
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { FilterRentBuyPipe } from './pipes/filter-rent-buy.pipe';
 import { PropertyRentComponent } from './Components/property/property-rent/property-rent.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
+import { UserRegisterComponent } from './user/user-register/user-register.component';
 
 
 @NgModule({
@@ -27,12 +29,16 @@ import { PropertyRentComponent } from './Components/property/property-rent/prope
     PageNotFoundComponent,
     FilterRentBuyPipe,
     PropertyRentComponent,
+    UserLoginComponent,
+    UserRegisterComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule],
+    FormsModule,
+    ReactiveFormsModule
+  ],
   providers: [HousingService],
   bootstrap: [AppComponent],
 })
