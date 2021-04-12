@@ -1,3 +1,4 @@
+<!-- V1
 <div class="row">
   <div class="col-6 m-auto">
     <div class="card m-auto">
@@ -38,7 +39,7 @@
               <i>Required Password</i>
             </span>
             <span *ngIf="password.errors.minlength">
-              <i>Password must be at least 8 characters'</i>
+              <i>Password must be at least 8 characters</i>
             </span>
           </span>
 
@@ -50,24 +51,117 @@
             <span *ngIf="cpassword.errors['required']">
               <i>Please Confirm Password</i>
             </span>
-            <span *ngIf="ownPassMatch(registerForm)">
-            <!-- <span *ngIf="registerForm.hasError('notmatched') && cpassword.valid"></span>  Custom Validator gonderildiginde bu sekilde arama eklenecek.-->
-              <i>Passwords are not matched !!!'</i>
-            </span>
 
+          <span *ngIf="registerForm.hasError('notMatched') && cpassword.valid"></span>  Custom Validator gonderildiginde bu sekilde arama eklenecek.
+            <i>Passwords are not matched !!!'</i>
           </span>
 
           <div class="form-group col-12">
             <label for="mobile" class="form-label">Phone Number</label>
             <input type="text" class="form-control" formControlName="mobile">
+            <span *ngIf="mobile.value.length">
+              {{mobile.value.length}}
+            </span>
           </div>
+          <span *ngIf="mobile.errors && mobile.touched" class="error-block">
+            <i>Please Enter Your Phone Number 10 Digits without 0 at start</i>
+            <br>
+          </span>
           <br>
           <div class="form-group col-12">
             <button type="submit" class="btn btn-primary me-md-2">Save</button>
             <button type="reset" class="btn btn-secondary">Cancel</button>
+            <div *ngIf="registerForm.valid && mobile.value.length == 10">
+              <img src="/assets/cliparts/tick2.png" alt="" width="70" height="50">
+            </div>
+          </div>
+
+          Form Values: {{registerForm.value | json}} <br>
+          Form Status: {{registerForm.status}} <br>
+        </form>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+V2
+<div class="row">
+  <div class="col-6 m-auto">
+    <div class="card m-auto">
+      <div class="card-header">
+        Register
+      </div>
+      <div class="card-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group col-12">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" formControlName="userName">
+            <span *ngIf="!userName.valid && userName.touched" class="error-block">
+              ** Required Area
+              <!-- *Required Area {{registerForm.controls.userName.value}}
+              *Required Area {{userName.errors.minlength}} -->
+            </span>
+          </div>
+
+          <div class="form-group col-12">
+            <label for="email" class="form-label">Email</label>
+            <input type="text" class="form-control"formControlName="email">
+          </div>
+          <span *ngIf="!email.valid && email.touched" class="error-block">
+            <span *ngIf="email.hasError('required')">
+              <i>You must enter an email adress</i>
+            </span>
+            <span *ngIf="email.hasError('email')">
+              <i>Email adress must be like 'example@example.com'</i>
+            </span>
+          </span>
+
+          <div class="form-group col-12">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password">
+          </div>
+          <span *ngIf="!password.valid && password.touched" class="error-block">
+            <span *ngIf="password.errors['required']">
+              <i>Required Password</i>
+            </span>
+            <span *ngIf="password.errors.minlength">
+              <i>Password must be at least 8 characters</i>
+            </span>
+          </span>
+
+          <div class="form-group col-12">
+            <label for="cpassword" class="form-label">Confirm Password</label>
+            <input type="password" class="form-control"formControlName="cpassword">
+          </div>
+          <span *ngIf="registerForm.errors?.notMatched" class="error-block">
+            <i>Passwords are not matched !!!'</i>
+          </span>
+
+          <span *ngIf="!cpassword.valid && cpassword.touched" class="error-block">
+            <span *ngIf="cpassword.errors['required']">
+              <i>Please Confirm Password</i>
+            </span>
+
+          </span>
+
+
+          <div class="form-group col-12">
+            <label for="mobile" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" formControlName="mobile">
+          </div>
+          <span *ngIf="mobile.errors && mobile.touched" class="error-block">
+            <i>Please Enter Your Phone Number 10 Digits without 0 at start</i>
+            <br>
+          </span>
+          <br>
+          <div class="form-group col-12">
+            <button type="submit" class="btn btn-primary me-md-2">Save</button>
+            <button type="reset" class="btn btn-secondary">Cancel</button>
+
           </div>
           Form Values: {{registerForm.value | json}} <br>
-          Form Status: {{registerForm.status}}
+          Form Status: {{registerForm.status}} <br>
+          Form Error: {{registerForm.errors?.notMatched}} <br>
 
         </form>
       </div>
