@@ -133,16 +133,18 @@ V2
             <label for="cpassword" class="form-label">Confirm Password</label>
             <input type="password" class="form-control"formControlName="cpassword">
           </div>
-          <span *ngIf="registerForm.errors?.notMatched" class="error-block">
-            <i>Passwords are not matched !!!'</i>
-          </span>
-
-          <span *ngIf="!cpassword.valid && cpassword.touched" class="error-block">
-            <span *ngIf="cpassword.errors['required']">
-              <i>Please Confirm Password</i>
+          <div class="complicated-error-span">
+            <span *ngIf="!cpassword.valid && cpassword.touched">
+              <span *ngIf="!cpassword.valid && cpassword.touched" class="error-block">
+                <span *ngIf="cpassword.errors['required']">
+                  <i>Please Confirm Password</i>
+                </span>
+              </span>
             </span>
-
-          </span>
+            <span *ngIf="registerForm.errors?.notMatched" class="error-block">
+              <i>Passwords are not matched !!!'</i>
+            </span>
+          </div>
 
 
           <div class="form-group col-12">
