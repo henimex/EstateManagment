@@ -8,6 +8,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 })
 export class UserRegisterComponent implements OnInit {
 
+  user:any = {};
   registerForm: FormGroup;
   constructor(private formBuilder:FormBuilder) { }
 
@@ -43,6 +44,20 @@ export class UserRegisterComponent implements OnInit {
     this.ownPassMatch(this.registerForm)
     console.log("Submit Works")
     console.log(this.registerForm)
+
+    this.user = Object.assign(this.user, this.registerForm.value);
+    localStorage.setItem('Users', JSON.stringify(this.user))
+    this.addUser(this.user);
+  }
+  addUser(user: any) {
+    let users = [];
+    if (localStorage.getItem('Users')) {
+      users = JSON.parse(localStorage.getItem('Users'));
+      users = [user, users]
+    }else{
+      users = [user];
+    }
+    localStorage.setItem('Users', JSON.stringify(users))
   }
 
   passwordValidator(formGroup: FormGroup):Validators{
